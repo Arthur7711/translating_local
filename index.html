@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 data-i18n-key="app-title">My Appy Apperson</h1>
+        <p data-i18n-key="lead">Welcome to my little spot on the interwebs!</p>
+    </div>
+
+    <script>
+        const locale = "ar";
+        const translations = {
+            "en": {
+                "app-title": "My Appy Apperson",
+                "lead": "Welcome to my little spot on the interwebs!",
+            },
+
+            "ar": {
+                "app-title": "تطبيقي المطبق",
+                "lead": "أهلاً بك في مكاني الصغير على النت.",
+            },
+        };
+
+        document.addEventListener("DOMContentLoaded", () => {
+            document
+                .querySelectorAll("[data-i18n-key]")
+                .forEach(translateElement);
+        });
+
+        function translateElement(element) {
+            const key = element.getAttribute("data-i18n-key");
+            const translation = translations[locale][key];
+            element.innerText = translation;
+        }
+    </script>
+</body>
+
+</html>
